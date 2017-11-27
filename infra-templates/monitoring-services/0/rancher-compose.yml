@@ -2,3 +2,16 @@
   name: "ASEAN monitoring"
   version: "v0.1.0"
   minimum_rancher_version: v1.6.11-rc1
+  questions:
+    - variable: "CADVISOR_PORT"
+      label: "cadvisor port"
+      description: "cadvisor port"
+      type: "string"
+      default: "9101"
+      required: true
+    - variable: NODE_EXPORTER_PORT
+      label: "node exporter port"
+      description: "node exporter port"
+      required: true
+      type: "string"
+      default: ":9100"

@@ -12,9 +12,8 @@ services:
     - "/var/run:/var/run:rw"
     - "/sys:/sys:ro"
     - "/var/lib/docker/:/var/lib/docker:ro"
+    command: --port={{  .Values.CADVISOR_PORT }}
     network_mode: host
-    ports:
-    - 0.0.0.0:18080:8080
 
   node-exporter:
     labels:
@@ -22,7 +21,7 @@ services:
     tty: true
     image: prom/node-exporter:v0.15.1
     stdin_open: true
+    command: --web.listen-address="{{  .Values.NODE_EXPORTER_PORT }}"
     network_mode: host
-    ports:
-    - 0.0.0.0:19100:9100
+
 
