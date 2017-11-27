@@ -1,5 +1,7 @@
 name: ASEAN monitoring infra services
 description: |
     ASEAN monitoring infra servcies, including node exporter and advisor
+category: Framework
 version: v0.1.0
-category: Infrastructure Services
+labels:
+  io.rancher.orchestration.supported: 'cattle,mesos,swarm,kubernetes'
