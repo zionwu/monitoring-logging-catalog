@@ -1,0 +1,5 @@
+name: ASEAN monitoring infra services
+description: |
+    ASEAN monitoring infra servcies, including node exporter and advisor
+version: v0.1.0
+category: Infrastructure Services

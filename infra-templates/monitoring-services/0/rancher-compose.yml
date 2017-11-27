@@ -1,0 +1,4 @@
+.catalog:
+  name: "ASEAN monitoring"
+  version: "v0.1.0"
+  minimum_rancher_version: v1.6.11-rc1
