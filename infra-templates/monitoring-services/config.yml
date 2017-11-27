@@ -1,7 +1,6 @@
-name: AAlibaba Cloud DNS
-description: |
-  ARancher External DNS service powered by Alibaba Cloud
-version:  v0.2.0
-category: Framework
+name: ASEAN Monitoring
+version: v0.1.0
+category: Infrastructure Services
+description: Monitoring infra services for ASEAN
 labels:
   io.rancher.orchestration.supported: 'cattle,mesos,swarm,kubernetes'

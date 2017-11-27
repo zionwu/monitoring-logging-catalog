@@ -1,6 +1,0 @@
-name: Monitoring 1.0
-version: v0.1.0
-category: Framework
-description: Monitoring 1.0
-labels:
-  io.rancher.orchestration.supported: 'cattle,mesos,swarm,kubernetes'
