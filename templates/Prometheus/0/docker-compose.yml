@@ -2,6 +2,7 @@ version: '2'
 services:  
   prometheus-data:
     tty: true
+    stdin_open: true
     image: registry.cn-hangzhou.aliyuncs.com/zionwu/prom-init:v0.0.1
     volumes:
       - /etc/prometheus
@@ -11,6 +12,7 @@ services:
 
   prometheus:
     tty: true
+    stdin_open: true
     image: prom/prometheus:v2.0.0
     command: --config.file=/etc/prometheus/prometheus.yml --web.enable-lifecycle
     network_mode: host
@@ -18,13 +20,12 @@ services:
         io.rancher.sidekicks: prometheus-data
     volumes_from:
       - prometheus-data
-    links:
-    - prometheus-rancher-exporter:prometheus-rancher-exporter
     extra_hosts:
-    - "rancher-server:${RANCHER_SERVER}"
+      - "rancher-server:${RANCHER_SERVER}"
 
   graf-db:
     tty: true
+    stdin_open: true
     image: infinityworks/graf-db:11
     command: cat
     volumes:
@@ -33,6 +34,7 @@ services:
 
   grafana:
     tty: true
+    stdin_open: true
     image: grafana/grafana:4.2.0
     ports:
       - 3000:3000
