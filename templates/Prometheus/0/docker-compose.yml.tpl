@@ -9,6 +9,9 @@ services:
       - /etc/prometheus-rules
       - prometheus-data:/prometheus
     network_mode: none
+    command: chmod 777 /prometheus
+    labels:
+      io.rancher.container.start_once: true
 
   prometheus:
     tty: true
@@ -17,11 +20,11 @@ services:
     command: --config.file=/etc/prometheus/prometheus.yml --web.enable-lifecycle --storage.tsdb.path=/prometheus
     network_mode: host
     labels:
-        io.rancher.sidekicks: prometheus-data
+      io.rancher.sidekicks: prometheus-data
     volumes_from:
       - prometheus-data
     extra_hosts:
-      - "rancher-server:${RANCHER_SERVER}"
+      - "rancher-server:{{  .Values.RANCHER_SERVER }}"
 
   graf-db:
     tty: true
