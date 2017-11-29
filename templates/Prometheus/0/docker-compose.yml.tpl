@@ -25,7 +25,8 @@ services:
       - prometheus-data
     extra_hosts:
       - "rancher-server:{{  .Values.RANCHER_SERVER }}"
-
+    links:
+    - alertmanager:alertmanager
 
   alertmanager-data:
     tty: true
@@ -50,7 +51,6 @@ services:
       io.rancher.sidekicks: alertmanager-data
     volumes_from:
       - alertmanager-data
-
 
   graf-db:
     tty: true
