@@ -12,7 +12,7 @@ services:
     - "/var/run:/var/run:rw"
     - "/sys:/sys:ro"
     - "/var/lib/docker/:/var/lib/docker:ro"
-    command: --port=:{{  .Values.CADVISOR_PORT }}
+    command: --port="{{  .Values.CADVISOR_PORT }}"
     network_mode: host
 
   node-exporter:
@@ -21,10 +21,10 @@ services:
     tty: true
     image: prom/node-exporter:v0.15.1
     stdin_open: true
-    command: --web.listen-address="{{  .Values.NODE_EXPORTER_PORT }}"
+    command: --web.listen-address=":{{  .Values.NODE_EXPORTER_PORT }}"
     network_mode: host
 
-  prometheus-rancher-exporter:
+  rancher-health-exporter:
     tty: true
     labels:
       io.rancher.container.create_agent: true
