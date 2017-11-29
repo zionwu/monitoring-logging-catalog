@@ -14,7 +14,7 @@ services:
     tty: true
     stdin_open: true
     image: prom/prometheus:v2.0.0
-    command: --config.file=/etc/prometheus/prometheus.yml --web.enable-lifecycle
+    command: --config.file=/etc/prometheus/prometheus.yml --web.enable-lifecycle --storage.tsdb.path=/prometheus
     network_mode: host
     labels:
         io.rancher.sidekicks: prometheus-data
