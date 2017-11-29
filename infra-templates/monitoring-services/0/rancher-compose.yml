@@ -13,7 +13,7 @@
       description: "node exporter port"
       required: true
       type: "string"
-      default: ":9100"
+      default: "9100"
     - variable: RANCHER_EXPORTER_PORT
       label: "rancher exporter port"
       description: "rancher exporter port"

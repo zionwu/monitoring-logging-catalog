@@ -31,7 +31,7 @@ services:
       io.rancher.container.agent.role: environment
     image: infinityworks/prometheus-rancher-exporter:v0.22.52
     ports:
-    - {{  .Values.CADVISOR_PORT }}:9173
+    - {{  .Values.RANCHER_EXPORTER_PORT }}:9173
 
   
 
