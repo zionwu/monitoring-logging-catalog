@@ -21,7 +21,7 @@
       type: "string"
       default: "9173"
 
- rancher-health-exporter:
+rancher-health-exporter:
   scale: 1
   health_check:
     port: 9173

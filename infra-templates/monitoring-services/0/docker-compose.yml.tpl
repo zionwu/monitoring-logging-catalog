@@ -12,7 +12,7 @@ services:
     - "/var/run:/var/run:rw"
     - "/sys:/sys:ro"
     - "/var/lib/docker/:/var/lib/docker:ro"
-    command: --port="{{  .Values.CADVISOR_PORT }}"
+    command: --port={{  .Values.CADVISOR_PORT }}
     network_mode: host
 
   node-exporter:
