@@ -26,6 +26,32 @@ services:
     extra_hosts:
       - "rancher-server:{{  .Values.RANCHER_SERVER }}"
 
+
+  alertmanager-data:
+    tty: true
+    stdin_open: true
+    image: registry.cn-hangzhou.aliyuncs.com/zionwu/alertmanager-init:v0.0.1
+    volumes:
+      - /etc/alertmanager
+      - /etc/alertmanager-templates
+      - alertmanager-data:/alertmanager
+    network_mode: none
+    command: chmod 777 /alertmanager
+    labels:
+      io.rancher.container.start_once: true
+
+  alertmanager:
+    tty: true
+    stdin_open: true
+    image: prom/alertmanager:v0.11.0
+    command:  -config.file=/etc/alertmanager/config.yml -storage.path=/alertmanager
+    network_mode: host
+    labels:
+      io.rancher.sidekicks: alertmanager-data
+    volumes_from:
+      - alertmanager-data
+
+
   graf-db:
     tty: true
     stdin_open: true
