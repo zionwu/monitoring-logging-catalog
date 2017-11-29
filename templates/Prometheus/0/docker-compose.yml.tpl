@@ -9,7 +9,7 @@ services:
       - /etc/prometheus-rules
       - prometheus-data:/prometheus
     network_mode: none
-    command: chmod 777 /prometheus
+    command: chmod -r 777 /prometheus /etc/prometheus /etc/prometheus-rules
     labels:
       io.rancher.container.start_once: true
 
