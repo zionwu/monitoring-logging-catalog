@@ -7,7 +7,7 @@ services:
       - /etc/prometheus
       - /etc/prometheus-rules
       - prometheus-data:/prometheus
-    net: none
+    network_mode: none
 
   prometheus:
     tty: true
@@ -29,7 +29,7 @@ services:
     command: cat
     volumes:
       - /var/lib/grafana/
-    net: none
+    network_mode: none
 
   grafana:
     tty: true
