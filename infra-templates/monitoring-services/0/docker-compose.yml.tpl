@@ -12,7 +12,7 @@ services:
     - "/var/run:/var/run:rw"
     - "/sys:/sys:ro"
     - "/var/lib/docker/:/var/lib/docker:ro"
-    command: --port={{  .Values.CADVISOR_PORT }}
+    command: --port=:{{  .Values.CADVISOR_PORT }}
     network_mode: host
 
   node-exporter:
@@ -23,5 +23,16 @@ services:
     stdin_open: true
     command: --web.listen-address="{{  .Values.NODE_EXPORTER_PORT }}"
     network_mode: host
+
+  prometheus-rancher-exporter:
+    tty: true
+    labels:
+      io.rancher.container.create_agent: true
+      io.rancher.container.agent.role: environment
+    image: infinityworks/prometheus-rancher-exporter:v0.22.52
+    ports:
+    - {{  .Values.CADVISOR_PORT }}:9173
+
+  
 
 
