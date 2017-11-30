@@ -1,7 +1,7 @@
 version: '2'
 services:
   monitoring-manager:
-   tty: true
+    tty: true
     stdin_open: true
     image: registry.cn-hangzhou.aliyuncs.com/zionwu/monitoring-manager:v0.0.2
     volumes:
