@@ -7,8 +7,28 @@
     label: "Rancher Server"
     description: "IP Address of the rancher server, no HTTP or slashes. This is only required for users that have enabled metrics to be exported by Rancher"
     default: "0.0.0.0"
-    required: false
+    required: true
     type: "string"
+  - variable: "CATTLE_URL"
+    label: "Cattle URL"
+    description: ""
+    default: "http://127.0.0.1:8080"
+    required: true
+    type: "string"
+  - variable: "CATTLE_ACCESS_KEY"
+    label: "CATTLE ACCESS KEY"
+    description: "CATTLE ACCESS KEY"
+    required: true
+    type: "string"
+  - variable: "CATTLE_SECRET_KEY"
+    label: "CATTLE SECRET KEY"
+    description: "CATTLE SECRET KEY"
+    required: true
+    type: "string"
+
+
+monitoring-manager:
+  scale: 1
 
 prometheus:
   scale: 1

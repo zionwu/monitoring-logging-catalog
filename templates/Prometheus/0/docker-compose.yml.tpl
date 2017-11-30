@@ -1,18 +1,33 @@
 version: '2'
-services:  
+services:
+  monitoring-manager:
+   tty: true
+    stdin_open: true
+    image: registry.cn-hangzhou.aliyuncs.com/zionwu/monitoring-manager:v0.0.2
+    volumes:
+      - prometheus-config:/etc/prometheus
+      - prometheus-rule:/etc/prometheus-rules
+      - prometheus-data:/prometheus
+    environment:
+      DEBUG: true
+      CATTLE_URL: {{  .Values.CATTLE_URL }}
+      CATTLE_ACCESS_KEY: {{  .Values.CATTLE_ACCESS_KEY }}
+      CATTLE_SECRET_KEY:  {{  .Values.CATTLE_SECRET_KEY }}
+    
+
   prometheus-data:
     tty: true
     stdin_open: true
     image: registry.cn-hangzhou.aliyuncs.com/zionwu/prom-init:v0.0.1
     volumes:
-      - /etc/prometheus
-      - /etc/prometheus-rules
+      - prometheus-config:/etc/prometheus
+      - prometheus-rule:/etc/prometheus-rules
       - prometheus-data:/prometheus
     network_mode: none
     command: chmod -R 777 /prometheus /etc/prometheus /etc/prometheus-rules
     labels:
       io.rancher.container.start_once: true
-
+    
   prometheus:
     tty: true
     stdin_open: true
@@ -62,6 +77,8 @@ services:
     network_mode: none
 
   grafana:
+    environment:
+      GF_USERS_DEFAULT_THEME: light
     tty: true
     stdin_open: true
     image: grafana/grafana:4.2.0
