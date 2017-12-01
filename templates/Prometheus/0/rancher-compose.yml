@@ -3,16 +3,16 @@
   version: "0.0.1"
   description: "Prometheus Monitoring Solution"
   questions:
-  - variable: "RANCHER_SERVER"
-    label: "Rancher Server"
+  - variable: "RANCHER_SERVER_IP"
+    label: "Rancher Server IP"
     description: "IP Address of the rancher server, no HTTP or slashes. This is only required for users that have enabled metrics to be exported by Rancher"
     default: "0.0.0.0"
     required: true
     type: "string"
-  - variable: "CATTLE_URL"
-    label: "Cattle URL"
+  - variable: "RANCHER_SERVER_PORT"
+    label: "Rancher Server PORT"
     description: ""
-    default: "http://127.0.0.1:8080"
+    default: "8080"
     required: true
     type: "string"
   - variable: "CATTLE_ACCESS_KEY"

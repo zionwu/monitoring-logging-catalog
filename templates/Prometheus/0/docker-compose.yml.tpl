@@ -3,14 +3,14 @@ services:
   monitoring-manager:
     tty: true
     stdin_open: true
-    image: registry.cn-hangzhou.aliyuncs.com/zionwu/monitoring-manager:v0.0.2
+    image: registry.cn-hangzhou.aliyuncs.com/zionwu/monitoring-manager:v0.0.3
     volumes:
       - prometheus-config:/etc/prometheus
       - prometheus-rule:/etc/prometheus-rules
       - prometheus-data:/prometheus
     environment:
       DEBUG: true
-      CATTLE_URL: {{  .Values.CATTLE_URL }}
+      CATTLE_URL: "http://{{  .Values.RANCHER_SERVER_IP }}:{{  .Values.RANCHER_SERVER_PORT }}"
       CATTLE_ACCESS_KEY: {{  .Values.CATTLE_ACCESS_KEY }}
       CATTLE_SECRET_KEY:  {{  .Values.CATTLE_SECRET_KEY }}
     
@@ -39,7 +39,7 @@ services:
     volumes_from:
       - prometheus-data
     extra_hosts:
-      - "rancher-server:{{  .Values.RANCHER_SERVER }}"
+      - "rancher-server:{{  .Values.RANCHER_SERVER_IP }}"
     links:
     - alertmanager:alertmanager
 
