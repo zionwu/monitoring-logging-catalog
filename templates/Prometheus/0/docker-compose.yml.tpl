@@ -70,7 +70,7 @@ services:
   graf-db:
     tty: true
     stdin_open: true
-    image: infinityworks/graf-db:11
+    image: registry.cn-hangzhou.aliyuncs.com/zionwu/grafana-db:v0.0.1
     command: cat
     volumes:
       - /var/lib/grafana/
