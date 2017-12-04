@@ -3,7 +3,7 @@ services:
   monitoring-manager:
     tty: true
     stdin_open: true
-    image: registry.cn-hangzhou.aliyuncs.com/zionwu/monitoring-manager:v0.0.3
+    image: registry.cn-hangzhou.aliyuncs.com/zionwu/monitoring-manager:v0.0.4
     volumes:
       - prometheus-config:/etc/prometheus
       - prometheus-rule:/etc/prometheus-rules
