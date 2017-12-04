@@ -1,0 +1,11 @@
+.catalog:
+  name: "Rancher Logging"
+  version: "v0.1.0"
+  description: "Rancher Logging Collector"
+  questions:
+    - variable: "elasticsearch_source"
+      description: "Link to elasticsearch service or stack/service"
+      label: "Elasticsearch source"
+      type: "service"
+      required: true
+      default: "es/elasticsearch-clients"

@@ -1,0 +1,33 @@
+.catalog:
+  name: "Rancher Logging"
+  version: v0.3.0
+  description: "Rancher Logging Collector"
+  minimum_rancher_version: v1.5.0-rc1
+  questions:
+    - variable: "elasticsearch_source"
+      description: "Link to elasticsearch service or stack/service"
+      label: "Elasticsearch source"
+      type: "service"
+      required: true
+      default: "elasticsearch/elasticsearch-clients"
+    - variable: "log_driver"
+      description: "Docker log driver"
+      label: "Log Driver"
+      type: "enum"
+      required: true
+      options:
+      - json-file
+      - journald
+      default: "json-file"
+    - variable: "log_vol_pattern"
+      description: "Pattern of logging volumes name"
+      label: "Volume Pattern"
+      type: "string"
+      required: true
+      default: "rancher-logging*"
+    - variable: "log_file_pattern"
+      description: "Pattern of logging files name"
+      label: "File Pattern"
+      type: "string"
+      required: true
+      default: "*.log"

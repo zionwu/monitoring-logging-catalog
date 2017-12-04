@@ -1,0 +1,23 @@
+.catalog:
+  name: "Rancher Logging"
+  version: v0.2.1
+  description: "Rancher Logging Collector"
+  questions:
+    - variable: "elasticsearch_source"
+      description: "Link to elasticsearch service or stack/service"
+      label: "Elasticsearch source"
+      type: "service"
+      required: true
+      default: "elasticsearch/elasticsearch-clients"
+    - variable: "log_vol_pattern"
+      description: "Pattern of logging volumes name"
+      label: "Volume Pattern"
+      type: "string"
+      required: true
+      default: "rancher-logging*"
+    - variable: "log_file_pattern"
+      description: "Pattern of logging files name"
+      label: "File Pattern"
+      type: "string"
+      required: true
+      default: "*.log"
