@@ -13,7 +13,9 @@ services:
       CATTLE_URL: "http://{{  .Values.RANCHER_SERVER_IP }}:{{  .Values.RANCHER_SERVER_PORT }}"
       CATTLE_ACCESS_KEY: {{  .Values.CATTLE_ACCESS_KEY }}
       CATTLE_SECRET_KEY:  {{  .Values.CATTLE_SECRET_KEY }}
-    
+      CADVISOR_PORT:  {{  .Values.CADVISOR_PORT }}
+      NODE_EXPORTER_PORT: {{  .Values.NODE_EXPORTER_PORT }}
+      RANCHER_EXPORTRT_PORT: {{  .Values.RANCHER_EXPORTER_PORT }}
 
   prometheus-data:
     tty: true
@@ -70,7 +72,7 @@ services:
   graf-db:
     tty: true
     stdin_open: true
-    image: registry.cn-hangzhou.aliyuncs.com/zionwu/grafana-db:v0.0.1
+    image: registry.cn-hangzhou.aliyuncs.com/zionwu/grafana-db:v0.0.2
     command: cat
     volumes:
       - /var/lib/grafana/

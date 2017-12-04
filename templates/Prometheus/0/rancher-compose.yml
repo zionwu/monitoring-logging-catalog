@@ -25,6 +25,24 @@
     description: "CATTLE SECRET KEY"
     required: true
     type: "string"
+  - variable: "CADVISOR_PORT"
+    label: "cadvisor port"
+    description: "cadvisor port"
+    type: "string"
+    default: "9101"
+    required: true
+  - variable: NODE_EXPORTER_PORT
+    label: "node exporter port"
+    description: "node exporter port"
+    required: true
+    type: "string"
+    default: "9100"
+  - variable: RANCHER_EXPORTER_PORT
+    label: "rancher exporter port"
+    description: "rancher exporter port"
+    required: true
+    type: "string"
+    default: "9173"
 
 
 monitoring-manager:
