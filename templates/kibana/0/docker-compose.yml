@@ -1,11 +1,11 @@
 kibana-vip:
   ports:
-  - 80:80
+  - "${public_port}:80"
   restart: always
   tty: true
   image: rancher/load-balancer-service
   links:
-  - nginx-proxy:kibana4
+  - nginx-proxy:kibana5
   stdin_open: true
 nginx-proxy-conf:
   image: rancher/nginx-conf:v0.2.0
@@ -18,13 +18,13 @@ nginx-proxy:
     - nginx-proxy-conf
   labels:
     io.rancher.container.hostname_override: container_name
-    io.rancher.sidekicks: nginx-proxy-conf,kibana4
+    io.rancher.sidekicks: nginx-proxy-conf,kibana5
   external_links:
     - ${elasticsearch_source}:elasticsearch
-kibana4:
+kibana5:
   restart: always
   tty: true
-  image: monlog/kibana:4.1.1
+  image: monlog/kibana:5.5.1
   net: "container:nginx-proxy"
   stdin_open: true
   environment:
