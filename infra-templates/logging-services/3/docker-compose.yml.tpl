@@ -2,7 +2,7 @@ version: '2'
 services:
   logging-agent:
     privileged: true
-    image: registry.cn-hangzhou.aliyuncs.com/niusmallnan/logging-es:v0.3.0
+    image: monlog/logging-es:v0.3.0
     pid: host
     {{- if eq .Values.log_driver "journald" }}
     command:
@@ -27,7 +27,7 @@ services:
         max-file: '2'
   logging-helper:
     privileged: true
-    image: registry.cn-hangzhou.aliyuncs.com/niusmallnan/logging-helper:v0.3.0
+    image: monlog/logging-helper:v0.3.0
     environment:
       LOG_VOL_PATTERN: '${log_vol_pattern}'
       LOG_FILE_PATTERN: '${log_file_pattern}'
