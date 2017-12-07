@@ -1,6 +1,6 @@
-name: ASEAN Monitoring
+name: Rancher Monitoring collector
 version: v0.1.0
 category: Infrastructure Services
-description: Monitoring infra services for ASEAN
+description: Rancher Monitoring infra services 
 labels:
   io.rancher.orchestration.supported: 'cattle,mesos,swarm,kubernetes'
