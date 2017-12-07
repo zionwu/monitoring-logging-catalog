@@ -24,7 +24,7 @@ nginx-proxy:
 kibana4:
   restart: always
   tty: true
-  image: kibana:4.1.1
+  image: monlog/kibana:4.1.1
   net: "container:nginx-proxy"
   stdin_open: true
   environment:
