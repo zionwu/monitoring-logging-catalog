@@ -3,19 +3,22 @@ services:
   monitoring-manager:
     tty: true
     stdin_open: true
-    image: monlog/monitoring-manager:v0.0.4
+    image: monlog/monitoring-manager:v0.0.8
     volumes:
       - prometheus-config:/etc/prometheus
       - prometheus-rule:/etc/prometheus-rules
       - prometheus-data:/prometheus
+      - alertmanager-config:/etc/alertmanager 
     environment:
-      DEBUG: true
+      DEBUG: {{ .Values.DEBUG  }}
       CATTLE_URL: "http://{{  .Values.RANCHER_SERVER_IP }}:{{  .Values.RANCHER_SERVER_PORT }}"
       CATTLE_ACCESS_KEY: {{  .Values.CATTLE_ACCESS_KEY }}
       CATTLE_SECRET_KEY:  {{  .Values.CATTLE_SECRET_KEY }}
       CADVISOR_PORT:  {{  .Values.CADVISOR_PORT }}
       NODE_EXPORTER_PORT: {{  .Values.NODE_EXPORTER_PORT }}
       RANCHER_EXPORTRT_PORT: {{  .Values.RANCHER_EXPORTER_PORT }}
+    ports:
+      - {{ .Values.MANAGER_PORT  }}:8888/tcp
 
   prometheus-data:
     tty: true
@@ -29,6 +32,7 @@ services:
     command: chmod -R 777 /prometheus /etc/prometheus /etc/prometheus-rules
     labels:
       io.rancher.container.start_once: true
+      io.rancher.container.dns: 'true'
     
   prometheus:
     tty: true
@@ -50,8 +54,8 @@ services:
     stdin_open: true
     image: monlog/alertmanager-init:v0.0.1
     volumes:
-      - /etc/alertmanager
-      - /etc/alertmanager-templates
+      - alertmanager-config:/etc/alertmanager
+      - alertmanager-template:/etc/alertmanager-templates
       - alertmanager-data:/alertmanager
     network_mode: none
     command: chmod 777 /alertmanager

@@ -43,6 +43,17 @@
     required: true
     type: "string"
     default: "9173"
+  - variable: MANAGER_PORT
+    label: "rancher monitoring manager port"
+    description: "rancher monitoring manager port"
+    required: true
+    type: "string"
+    default: "8888"
+  - variable: DEBUG
+    label: "enable rancher monitoring manager debug log"
+    description: "enable rancher monitoring manager debug log"
+    type: "string"
+    default: "false"
 
 
 monitoring-manager:
