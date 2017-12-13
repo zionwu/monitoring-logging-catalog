@@ -32,7 +32,6 @@ services:
     command: chmod -R 777 /prometheus /etc/prometheus /etc/prometheus-rules
     labels:
       io.rancher.container.start_once: true
-      io.rancher.container.dns: 'true'
     
   prometheus:
     tty: true
@@ -42,6 +41,7 @@ services:
     network_mode: host
     labels:
       io.rancher.sidekicks: prometheus-data
+      io.rancher.container.dns: 'true'
     volumes_from:
       - prometheus-data
     extra_hosts:
