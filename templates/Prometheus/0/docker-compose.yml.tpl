@@ -3,7 +3,7 @@ services:
   monitoring-manager:
     tty: true
     stdin_open: true
-    image: monlog/monitoring-manager:v0.0.9
+    image: monlog/monitoring-manager:v0.0.10
     volumes:
       - prometheus-config:/etc/prometheus
       - prometheus-rule:/etc/prometheus-rules
