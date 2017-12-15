@@ -2,7 +2,7 @@ version: '2'
 services:
   logging-agent:
     privileged: true
-    image: monlog/logging-es:v0.3.1
+    image: monlog/logging-es:v0.3.1.1
     pid: host
     {{- if eq .Values.log_driver "journald" }}
     command:
@@ -12,8 +12,6 @@ services:
     volumes:
     - /run/log/journal:/run/log/journal
     {{- end }}
-    external_links:
-    - ${elasticsearch_source}:elasticsearch
     volumes_from:
     - logging-helper
     labels:
@@ -44,3 +42,6 @@ services:
       options:
         max-size: 25m
         max-file: '2'
+  elasticsearch:
+    image: rancher/external-service
+

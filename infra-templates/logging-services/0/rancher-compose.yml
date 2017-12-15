@@ -4,12 +4,11 @@
   description: "Rancher Logging Collector"
   minimum_rancher_version: v1.5.0-rc1
   questions:
-    - variable: "elasticsearch_source"
-      description: "Link to elasticsearch service or stack/service"
-      label: "Elasticsearch source"
-      type: "service"
+    - variable: "elasticsearch_ip"
+      description: "elasticsearch service ip"
+      label: "Elasticsearch ip"
+      type: "string"
       required: true
-      default: "elasticsearch/elasticsearch-clients"
     - variable: "log_driver"
       description: "Docker log driver"
       label: "Log Driver"
@@ -31,3 +30,7 @@
       type: "string"
       required: true
       default: "*.log"
+elasticsearch:
+  external_ips:
+  - ${elasticsearch_ip}
+  start_on_create: true
