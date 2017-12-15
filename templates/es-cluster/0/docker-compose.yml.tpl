@@ -60,7 +60,7 @@ services:
             - es-storage
         depends_on:
             - es-master
-
+    
     es-client:
         labels:
             io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
@@ -115,6 +115,15 @@ services:
             - "SYSCTL_KEY=vm.max_map_count"
             - "SYSCTL_VALUE=262144"
     {{- end}}
+
+    lb:
+        image: rancher/lb-service-haproxy:v0.7.15
+        ports:
+            - 9200:9200/tcp
+        labels:
+            io.rancher.container.agent.role: environmentAdmin,agent
+            io.rancher.container.agent_service.drain_provider: 'true'
+            io.rancher.container.create_agent: 'true'
 
 volumes:
   es-storage-volume:
