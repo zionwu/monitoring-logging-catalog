@@ -49,11 +49,6 @@
     required: true
     type: "string"
     default: "8888"
-  - variable: DEBUG
-    label: "enable rancher monitoring manager debug log"
-    description: "enable rancher monitoring manager debug log"
-    type: "string"
-    default: "false"
 
 
 monitoring-manager:

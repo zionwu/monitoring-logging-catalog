@@ -10,7 +10,6 @@ services:
       - prometheus-data:/prometheus
       - alertmanager-config:/etc/alertmanager 
     environment:
-      DEBUG: {{ .Values.DEBUG  }}
       CATTLE_URL: "http://{{  .Values.RANCHER_SERVER_IP }}:{{  .Values.RANCHER_SERVER_PORT }}"
       CATTLE_ACCESS_KEY: {{  .Values.CATTLE_ACCESS_KEY }}
       CATTLE_SECRET_KEY:  {{  .Values.CATTLE_SECRET_KEY }}
@@ -76,7 +75,7 @@ services:
   graf-db:
     tty: true
     stdin_open: true
-    image: monlog/grafana-db:v0.0.2
+    image: monlog/grafana-db:v0.0.3
     command: cat
     volumes:
       - /var/lib/grafana/
