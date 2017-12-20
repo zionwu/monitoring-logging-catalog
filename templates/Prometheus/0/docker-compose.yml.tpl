@@ -75,7 +75,7 @@ services:
   graf-db:
     tty: true
     stdin_open: true
-    image: monlog/grafana-db:v0.0.3
+    image: monlog/grafana-db:v0.0.5
     command: cat
     volumes:
       - /var/lib/grafana/
