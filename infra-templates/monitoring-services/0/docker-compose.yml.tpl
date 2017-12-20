@@ -5,7 +5,7 @@ services:
     labels:
       io.rancher.scheduler.global: 'true'
     tty: true
-    image: google/cadvisor:v0.28.2
+    image: google/cadvisor:v0.25.0
     stdin_open: true
     volumes:
     - "/:/rootfs:ro"
@@ -23,6 +23,7 @@ services:
     stdin_open: true
     command: --web.listen-address=":{{  .Values.NODE_EXPORTER_PORT }}"
     network_mode: host
+    privileged: true
 
   rancher-health-exporter:
     tty: true
