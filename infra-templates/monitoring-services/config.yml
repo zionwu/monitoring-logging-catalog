@@ -4,3 +4,4 @@ category: Infrastructure Services
 description: Rancher Monitoring infra services 
 labels:
   io.rancher.orchestration.supported: 'cattle,mesos,swarm,kubernetes'
+  io.rancher.certified: other
