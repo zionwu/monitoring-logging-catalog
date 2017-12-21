@@ -3,3 +3,5 @@ description: |
   Prometheus and friends, auto-discovering monitoring solution for Rancher deployments.
 version: 0.0.1
 category: Applications
+labels:
+  io.rancher.certified: rancher

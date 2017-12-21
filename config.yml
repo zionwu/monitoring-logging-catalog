@@ -1,0 +1,39 @@
+global:
+  resolve_timeout: 5m
+  smtp_from: zion763@163.com
+  smtp_smarthost: smtp.163.com:465
+  smtp_auth_username: zion763@163.com
+  smtp_auth_password: password
+  smtp_require_tls: false
+  slack_api_url: slack_api_url
+route:
+  receiver: rancherlabs
+  routes:
+  - match:
+      environment: 1a5
+    routes:
+    - receiver: email-receiver
+      match:
+        alert_id: 6fbba306-a052-400c-913c-46ea46e690db
+    - receiver: webhook-receiver
+      match:
+        alert_id: 150c266f-4c51-4aa1-9642-9e5a9d7683b7
+  group_wait: 1m
+  group_interval: 0s
+  repeat_interval: 5m
+receivers:
+- name: rancherlabs
+  slack_configs:
+  - send_resolved: false
+    channel: '#alert'
+- name: email-receiver
+  email_configs:
+  - send_resolved: false
+    to: zion@rancher.com
+    headers:
+      Subject: 'Alert from Rancher: {{ (index .Alerts 0).Labels.description}}'
+- name: webhook-receiver
+  webhook_configs:
+  - send_resolved: false
+    url: xxx
+templates: []
