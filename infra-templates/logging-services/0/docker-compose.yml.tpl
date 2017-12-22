@@ -2,7 +2,7 @@ version: '2'
 services:
   logging-agent:
     privileged: true
-    image: monlog/logging-es:v0.3.1.1
+    image: monlog/logging-es:v0.3.1.2
     pid: host
     {{- if eq .Values.log_driver "journald" }}
     command:
@@ -44,4 +44,3 @@ services:
         max-file: '2'
   elasticsearch:
     image: rancher/external-service
-

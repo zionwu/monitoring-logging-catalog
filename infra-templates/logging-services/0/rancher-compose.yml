@@ -30,7 +30,22 @@
       type: "string"
       required: true
       default: "*.log"
+    - variable: "elasticsearch_index_format"
+      description: "Pattern of elasticsearch index format, daily, monthly, yearly"
+      label: "Index format"
+      type: "string"
+      required: true
+      default: "%Y.%m.%d"
+      type: enum
+      options:
+      - "%Y.%m.%d"
+      - "%Y.%m."
+      - "%Y."
 elasticsearch:
   external_ips:
   - ${elasticsearch_ip}
   start_on_create: true
+logging-agent:
+  start_on_create: true
+  metadata:
+    elasticsearch_index_format: ${elasticsearch_index_format}
