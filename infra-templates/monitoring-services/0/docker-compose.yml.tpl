@@ -29,7 +29,7 @@ services:
     labels:
       io.rancher.container.create_agent: true
       io.rancher.container.agent.role: environment
-    image: monlog/prometheus-rancher-exporter:v0.23.2
+    image: monlog/prometheus-rancher-exporter:v0.23.3
     ports:
     - {{  .Values.RANCHER_EXPORTER_PORT }}:9173
 
