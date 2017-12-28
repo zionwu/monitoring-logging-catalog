@@ -8,17 +8,10 @@
       label: "Elasticsearch source"
       type: "service"
       required: true
-      default: "es/elasticsearch-clients"
+      default: "es-cluster/es-client"
     - variable: "public_port"
       label: "Public Port"
       description: "Unique public port for Kibana"
       type: "int"
       default: 80
       required: true
-
-nginx-proxy:
-  metadata:
-    nginx:
-      conf:
-        servername: "kibana"
-        upstream_port: 5601
