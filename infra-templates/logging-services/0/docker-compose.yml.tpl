@@ -2,7 +2,7 @@ version: '2'
 services:
   logging-agent:
     privileged: true
-    image: monlog/logging-es:v0.3.1.2
+    image: monlog/logging-es:v0.3.1.3
     pid: host
     {{- if eq .Values.log_driver "journald" }}
     command:
@@ -44,3 +44,9 @@ services:
         max-file: '2'
   elasticsearch:
     image: rancher/external-service
+    {{- if eq .Values.elasticsearch_address_type "hostname"}}
+    hostname: ${elasticsearch_address}
+    {{- else}}
+    external_ips:
+    - ${elasticsearch_address}
+    {{- end }}
