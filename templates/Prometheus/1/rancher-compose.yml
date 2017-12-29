@@ -1,0 +1,86 @@
+.catalog:
+  name: "Prometheus"
+  version: "0.0.2"
+  description: "Prometheus Monitoring Solution"
+  questions:
+  - variable: "RANCHER_SERVER_IP"
+    label: "Rancher Server IP"
+    description: "IP Address of the rancher server, no HTTP or slashes. This is only required for users that have enabled metrics to be exported by Rancher"
+    default: "0.0.0.0"
+    required: true
+    type: "string"
+  - variable: "RANCHER_SERVER_PORT"
+    label: "Rancher Server PORT"
+    description: ""
+    default: "8080"
+    required: true
+    type: "string"
+  - variable: "CATTLE_ACCESS_KEY"
+    label: "CATTLE ACCESS KEY"
+    description: "CATTLE ACCESS KEY"
+    required: true
+    type: "string"
+  - variable: "CATTLE_SECRET_KEY"
+    label: "CATTLE SECRET KEY"
+    description: "CATTLE SECRET KEY"
+    required: true
+    type: "string"
+  - variable: "CADVISOR_PORT"
+    label: "cadvisor port"
+    description: "cadvisor port"
+    type: "string"
+    default: "9101"
+    required: true
+  - variable: NODE_EXPORTER_PORT
+    label: "node exporter port"
+    description: "node exporter port"
+    required: true
+    type: "string"
+    default: "9100"
+  - variable: RANCHER_EXPORTER_PORT
+    label: "rancher exporter port"
+    description: "rancher exporter port"
+    required: true
+    type: "string"
+    default: "9173"
+  - variable: MANAGER_PORT
+    label: "rancher monitoring manager port"
+    description: "rancher monitoring manager port"
+    required: true
+    type: "string"
+    default: "8888"
+
+
+monitoring-manager:
+  scale: 1
+
+prometheus:
+  scale: 1
+  health_check:
+    port: 9090
+    interval: 5000
+    unhealthy_threshold: 3
+    request_line: ''
+    healthy_threshold: 2
+    response_timeout: 5000
+
+grafana:
+  scale: 1
+  health_check:
+    port: 3000
+    interval: 5000
+    unhealthy_threshold: 3
+    request_line: ''
+    healthy_threshold: 2
+    response_timeout: 5000
+
+alertmanager:
+  scale: 1
+  health_check:
+    port: 9093
+    interval: 5000
+    unhealthy_threshold: 3
+    request_line: ''
+    healthy_threshold: 2
+    response_timeout: 5000
+
