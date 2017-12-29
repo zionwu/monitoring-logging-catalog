@@ -4,9 +4,17 @@
   description: "Rancher Logging Collector"
   minimum_rancher_version: v1.5.0-rc1
   questions:
-    - variable: "elasticsearch_ip"
-      description: "elasticsearch service ip"
-      label: "Elasticsearch ip"
+    - variable: elasticsearch_address_type
+      label: "Elasticsearch Address Type"
+      type: "enum"
+      options:
+        - "ip"
+        - "hostname"
+      default: "ip"
+      required: true
+    - variable: "elasticsearch_address"
+      description: "elasticsearch service address ip or hostname"
+      label: "Elasticsearch address"
       type: "string"
       required: true
     - variable: "log_driver"
@@ -42,8 +50,6 @@
       - "%Y.%m."
       - "%Y."
 elasticsearch:
-  external_ips:
-  - ${elasticsearch_ip}
   start_on_create: true
 logging-agent:
   start_on_create: true
