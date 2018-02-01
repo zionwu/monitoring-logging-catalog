@@ -1,0 +1,32 @@
+.catalog:
+  name: "ChinaLife monitoring"
+  version: "v0.5.0"
+  questions:
+    - variable: "CADVISOR_PORT"
+      label: "cadvisor port"
+      description: "cadvisor port"
+      type: "string"
+      default: "9101"
+      required: true
+    - variable: NODE_EXPORTER_PORT
+      label: "node exporter port"
+      description: "node exporter port"
+      required: true
+      type: "string"
+      default: "9100"
+    - variable: RANCHER_EXPORTER_PORT
+      label: "rancher exporter port"
+      description: "rancher exporter port"
+      required: true
+      type: "string"
+      default: "9173"
+
+rancher-health-exporter:
+  scale: 1
+  health_check:
+    port: 9173
+    interval: 5000
+    unhealthy_threshold: 3
+    request_line: ''
+    healthy_threshold: 2
+    response_timeout: 5000
