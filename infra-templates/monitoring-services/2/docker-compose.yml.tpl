@@ -29,7 +29,7 @@ services:
     labels:
       io.rancher.container.create_agent: 'true'
       io.rancher.container.agent.role: environment
-    image: maiwj/rancher1.x-exporter:1.2.0
+    image: maiwj/rancher1.x-exporter:1.2.1
     ports:
     - {{  .Values.RANCHER_EXPORTER_PORT }}:9173
 
